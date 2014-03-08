@@ -38,8 +38,8 @@ public class NodeWarningMessage extends Message<ClientProtocolParameters> {
 	@Override
 	public boolean equals(Object obj) {
 		if(super.equals(obj)) {
-			return 	this.nodeId == ((ServerClientWarningMessage)obj).nodeId
-					&& this.message.equals(((ServerClientWarningMessage)obj).message);
+			return 	this.nodeId == ((NodeWarningMessage)obj).nodeId
+					&& this.message.equals(((NodeWarningMessage)obj).message);
 		} else return false;
 	}
 

@@ -57,8 +57,6 @@ public class ServerAuthenticationMessageSubParser extends ServerMessageSubParser
 			sessionKey = attributes.getValue("session-key");
 			if(username == null || username.isEmpty()) {
 				throw new SAXException("username was null.");
-			} else if(sessionKey == null || sessionKey.isEmpty()) {
-				throw new SAXException("session-key was null.");
 			} else if(responseString == null || responseString.isEmpty()) {
 				throw new SAXException("response was null.");
 			}
@@ -67,6 +65,9 @@ public class ServerAuthenticationMessageSubParser extends ServerMessageSubParser
 			} catch(NumberFormatException e) {
 				throw new SAXException("response code malformed, unable to parse code.");
 			}
+			if((sessionKey == null || sessionKey.isEmpty()) && responseCode == 200) {
+				throw new SAXException("session-key was null.");
+			} 
 			if(responseString.length() > 3) {
 				response = responseString.substring(4);
 			}

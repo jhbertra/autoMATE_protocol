@@ -17,7 +17,8 @@ public abstract class Message <P extends ProtocolParameters> extends XmlConverti
 		STATUS_UPDATE_NODE,
 		WARNING_CLIENT,
 		WARNING_NODE, 
-		REGISTER_NODE;
+		REGISTER_NODE, 
+		REGISTRATION;
 
 		/* (non-Javadoc)
 		 * @see java.lang.Enum#toString()
@@ -28,13 +29,6 @@ public abstract class Message <P extends ProtocolParameters> extends XmlConverti
 		}
 		
 	}
-	
-	public static final String AUTHENTICATION = "authentication";
-	public static final String NODE_LIST = "node-list";
-	public static final String COMMAND = "command";
-	public static final String PING = "ping";
-	public static final String STATUS_UPDATE = "status-update";
-	public static final String WARNING = "warning";
 
 	public static final int NUM_MESSAGE_TYPES = 6;
 	

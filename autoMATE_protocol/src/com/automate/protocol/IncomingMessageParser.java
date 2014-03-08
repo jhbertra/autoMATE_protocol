@@ -8,15 +8,15 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import com.automate.protocol.client.ClientProtocolParameters;
 import com.automate.util.xml.XmlFormatException;
 
 public class IncomingMessageParser<P extends ProtocolParameters> implements IIncomingMessageParser<P> {
 
-	private HashMap<String, MessageSubParser<Message<P>, P>> subParsers;
+	private HashMap<String,MessageSubParser<? extends Message<P>, P>> subParsers;
 	
 	public IncomingMessageParser(
-			HashMap<String, MessageSubParser<Message<P>, P>> subParsers) {
-		super();
+			HashMap<String, MessageSubParser<? extends Message<P>, P>> subParsers) {
 		this.subParsers = subParsers;
 	}
 
@@ -46,14 +46,14 @@ public class IncomingMessageParser<P extends ProtocolParameters> implements IInc
 			throw new MessageFormatException("All messages are required to start with a content-type header.");
 		}
 		try {
-			return getSubParser(contentType).parseXml(xml);
+			return getSubParser(contentType).parseXml(xml.substring(xml.indexOf("\n") + 1));
 		} catch (NoSuchElementException e) {
 			throw new MessageFormatException("Unrecognized type header: " + messageHeader);
 		}
 	}
 	
-	private MessageSubParser<Message<P>, P> getSubParser(String contentType)  throws NoSuchElementException {
-		 MessageSubParser<Message<P>, P> parser = subParsers.get(contentType);
+	private MessageSubParser<? extends Message<P>, P> getSubParser(String contentType)  throws NoSuchElementException {
+		 MessageSubParser<? extends Message<P>, P> parser = subParsers.get(contentType);
 		if(parser == null) {
 			throw new NoSuchElementException();
 		}
