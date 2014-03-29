@@ -1,0 +1,12 @@
+<project name="protocol" default="dist">
+	<property name="app.name" value="autoMATE_protocol" />
+	
+	<path id="classpath">
+		<fileset dir="lib/">
+		    <include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<import file="../../autoMATE_server/autoMATE_server/build-common.xml" />
+	
+</project>

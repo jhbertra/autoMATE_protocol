@@ -55,9 +55,6 @@ extends MessageSubParser<M, ServerProtocolParameters> {
 		if(qName.equals("parameter")) {
 			String name = attributes.getValue("name");
 			String value = attributes.getValue("value");
-			if(value == null || value.isEmpty()) {
-				throw new SAXException("parameter tag had no value.");
-			}
 			if(name.equals("version")) {
 				String [] versionParts = value.split("\\.");
 				if(versionParts.length != 2) {

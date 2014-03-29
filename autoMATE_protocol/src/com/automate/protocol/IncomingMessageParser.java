@@ -46,6 +46,7 @@ public class IncomingMessageParser<P extends ProtocolParameters> implements IInc
 			throw new MessageFormatException("All messages are required to start with a content-type header.");
 		}
 		try {
+			System.out.println("Content type:" + contentType);
 			return getSubParser(contentType).parseXml(xml.substring(xml.indexOf("\n") + 1));
 		} catch (NoSuchElementException e) {
 			throw new MessageFormatException("Unrecognized type header: " + messageHeader);
