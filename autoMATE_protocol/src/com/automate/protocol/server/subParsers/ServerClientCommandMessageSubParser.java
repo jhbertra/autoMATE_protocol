@@ -11,7 +11,7 @@ import com.automate.protocol.MessageFormatException;
 import com.automate.protocol.server.messages.ServerClientCommandMessage;
 import com.automate.util.xml.XmlFormatException;
 
-public class ServerCommandMessageSubParser extends ServerMessageSubParser<ServerClientCommandMessage> {
+public class ServerClientCommandMessageSubParser extends ServerMessageSubParser<ServerClientCommandMessage> {
 	
 	private long commandId;
 	private int responseCode;

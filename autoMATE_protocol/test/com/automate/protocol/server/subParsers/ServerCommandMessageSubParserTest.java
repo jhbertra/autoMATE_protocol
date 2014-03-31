@@ -10,7 +10,7 @@ import com.automate.protocol.server.messages.ServerClientCommandMessage;
 
 public class ServerCommandMessageSubParserTest {
 
-	private ServerCommandMessageSubParser subject;
+	private ServerClientCommandMessageSubParser subject;
 	
 	private String xml1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 			"<message >\n" +
@@ -76,32 +76,32 @@ public class ServerCommandMessageSubParserTest {
 	
 	@Test(expected=SAXException.class)
 	public void testNoAttributes() throws Exception {
-		subject = new ServerCommandMessageSubParser();
+		subject = new ServerClientCommandMessageSubParser();
 		subject.parseXml(xml1);
 	}
 	
 	@Test(expected=SAXException.class)
 	public void testNoCommandId() throws Exception {
-		subject = new ServerCommandMessageSubParser();
+		subject = new ServerClientCommandMessageSubParser();
 		subject.parseXml(xml2);
 	}
 	
 	@Test(expected=SAXException.class)
 	public void testNoResponseCode() throws Exception {
-		subject = new ServerCommandMessageSubParser();
+		subject = new ServerClientCommandMessageSubParser();
 		subject.parseXml(xml3);
 	}
 
 	@Test
 	public void testProperlyFormattedMessageMessage() throws Exception {
-		subject = new ServerCommandMessageSubParser();
+		subject = new ServerClientCommandMessageSubParser();
 		ServerClientCommandMessage expected = new ServerClientCommandMessage(parameters, 0, 200, null);
 		assertEquals(expected, subject.parseXml(xml4));
 	}
 	
 	@Test
 	public void testProperlyFormattedMessageWithMessage() throws Exception {
-		subject = new ServerCommandMessageSubParser();
+		subject = new ServerClientCommandMessageSubParser();
 		ServerClientCommandMessage expected = new ServerClientCommandMessage(parameters, 0, 200, "command succeeded!");
 		assertEquals(expected, subject.parseXml(xml5));
 	}

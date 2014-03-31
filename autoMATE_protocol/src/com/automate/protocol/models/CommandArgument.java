@@ -88,7 +88,7 @@ public class CommandArgument<T> extends XmlConvertible {
 
 	@Override
 	public String toString() {
-		return getClass().getName() + ":\nname: " + name + "\ntype: " + type + "\nvalue: " + value;
+		return name;
 	}
 	
 }
