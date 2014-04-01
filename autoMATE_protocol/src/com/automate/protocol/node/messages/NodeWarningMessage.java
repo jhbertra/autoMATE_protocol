@@ -7,22 +7,19 @@ import com.automate.util.xml.XmlFormatException;
 
 public class NodeWarningMessage extends Message<ClientProtocolParameters> {
 	
-	public final long nodeId;
 	public final String message;
 	
-	public NodeWarningMessage(ClientProtocolParameters parameters, long nodeId, String message) {
+	public NodeWarningMessage(ClientProtocolParameters parameters, String message) {
 		super(parameters);
 		if(message == null) {
 			throw new NullPointerException("message was null in ServerWarningMessage");
 		}
-		this.nodeId = nodeId;
 		this.message = message;
 	}
 
 	@Override
 	protected void addContent() throws XmlFormatException {
 		addElement("warning", true
-				, new Attribute("node-id", String.valueOf(nodeId))
 				, new Attribute("message", message));
 	}
 
@@ -37,14 +34,13 @@ public class NodeWarningMessage extends Message<ClientProtocolParameters> {
 	@Override
 	public boolean equals(Object obj) {
 		if(super.equals(obj)) {
-			return 	this.nodeId == ((NodeWarningMessage)obj).nodeId
-					&& this.message.equals(((NodeWarningMessage)obj).message);
+			return 	this.message.equals(((NodeWarningMessage)obj).message);
 		} else return false;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + "\nNodeWarningMessage:\nnodeId: " + nodeId + "\nmessage: " + message;
+		return super.toString() + "\nNodeWarningMessage:\nmessage: " + message;
 	}
 
 }

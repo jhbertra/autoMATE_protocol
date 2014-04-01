@@ -19,7 +19,6 @@ import com.automate.util.xml.XmlFormatException;
 
 public class NodeStatusUpdateMessageSubParser extends ClientMessageSubParser<NodeStatusUpdateMessage> {
 	
-	private int nodeId;
 	private List<Status<?>> statuses = new ArrayList<Status<?>>();
 	
 	/* (non-Javadoc)
@@ -29,7 +28,7 @@ public class NodeStatusUpdateMessageSubParser extends ClientMessageSubParser<Nod
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
 		if(qName.equals("content")) {
-			this.message = new NodeStatusUpdateMessage(parameters, nodeId, statuses);
+			this.message = new NodeStatusUpdateMessage(parameters, statuses);
 		} else {
 			super.endElement(uri, localName, qName);
 		}
@@ -42,7 +41,6 @@ public class NodeStatusUpdateMessageSubParser extends ClientMessageSubParser<Nod
 	public NodeStatusUpdateMessage parseXml(String xml)
 			throws XmlFormatException, IOException, MessageFormatException,
 			SAXException, ParserConfigurationException {
-		this.nodeId = -1;
 		this.statuses = new ArrayList<Status<?>>();
 		return super.parseXml(xml);
 	}
@@ -72,14 +70,7 @@ public class NodeStatusUpdateMessageSubParser extends ClientMessageSubParser<Nod
 			}
 			statuses.add(Status.newStatus(componentName, type, value));
 		} else if(qName.equals("status-update")) {
-			try {				
-				nodeId = Integer.parseInt(attributes.getValue("node-id"));
-			} catch(NumberFormatException e) {
-				throw new SAXException(e);
-			}
-			if(nodeId < 0) {
-				throw new SAXException("Illegal value for node id: " + nodeId);
-			}
+			// do nothing
 		} else {
 			super.startElement(uri, localName, qName, attributes);
 		}
