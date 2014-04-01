@@ -30,9 +30,9 @@ public class Status<T> extends XmlConvertible {
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof Status<?>) {
-			return 	this.name.equals(((Status) obj).name)
-					&& this.type.equals(((Status) obj).type)
-					&& this.value.equals(((Status) obj).value);
+			return 	this.name.equals(((Status<?>) obj).name)
+					&& this.type.equals(((Status<?>) obj).type)
+					&& this.value.equals(((Status<?>) obj).value);
 		} else return false;
 	}
 

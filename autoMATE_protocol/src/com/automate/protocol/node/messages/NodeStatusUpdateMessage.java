@@ -1,10 +1,9 @@
 package com.automate.protocol.node.messages;
 
-import java.util.List;
+import java.util.List; 
 
 import com.automate.protocol.Message;
 import com.automate.protocol.client.ClientProtocolParameters;
-import com.automate.protocol.models.CommandArgument;
 import com.automate.protocol.models.Status;
 import com.automate.protocol.server.messages.ServerClientStatusUpdateMessage;
 import com.automate.util.xml.Attribute;

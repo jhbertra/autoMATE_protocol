@@ -1,6 +1,6 @@
 package com.automate.protocol.server.subParsers;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +10,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import com.automate.protocol.MessageFormatException;
-import com.automate.protocol.client.messages.ClientCommandMessage;
 import com.automate.protocol.models.CommandArgument;
 import com.automate.protocol.models.Type;
 import com.automate.protocol.models.Type.TypeFormatException;

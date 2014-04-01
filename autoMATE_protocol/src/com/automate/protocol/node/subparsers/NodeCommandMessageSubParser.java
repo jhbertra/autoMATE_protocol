@@ -1,6 +1,6 @@
 package com.automate.protocol.node.subparsers;
 
-import java.io.IOException;
+import java.io.IOException; 
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -10,7 +10,6 @@ import org.xml.sax.SAXException;
 import com.automate.protocol.MessageFormatException;
 import com.automate.protocol.client.subParsers.ClientMessageSubParser;
 import com.automate.protocol.node.messages.NodeCommandMessage;
-import com.automate.protocol.server.messages.ServerClientCommandMessage;
 import com.automate.util.xml.XmlFormatException;
 
 public class NodeCommandMessageSubParser extends ClientMessageSubParser<NodeCommandMessage> {

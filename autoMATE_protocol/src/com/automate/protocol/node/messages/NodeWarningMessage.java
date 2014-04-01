@@ -1,8 +1,7 @@
 package com.automate.protocol.node.messages;
 
-import com.automate.protocol.Message;
+import com.automate.protocol.Message; 
 import com.automate.protocol.client.ClientProtocolParameters;
-import com.automate.protocol.server.messages.ServerClientWarningMessage;
 import com.automate.util.xml.Attribute;
 import com.automate.util.xml.XmlFormatException;
 

@@ -1,6 +1,6 @@
 package com.automate.protocol.node.subparsers;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,6 @@ import com.automate.protocol.models.Status;
 import com.automate.protocol.models.Type;
 import com.automate.protocol.models.Type.TypeFormatException;
 import com.automate.protocol.node.messages.NodeStatusUpdateMessage;
-import com.automate.protocol.server.messages.ServerClientStatusUpdateMessage;
 import com.automate.util.xml.XmlFormatException;
 
 public class NodeStatusUpdateMessageSubParser extends ClientMessageSubParser<NodeStatusUpdateMessage> {

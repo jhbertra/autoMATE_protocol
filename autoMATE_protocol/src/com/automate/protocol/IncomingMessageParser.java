@@ -8,7 +8,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import com.automate.protocol.client.ClientProtocolParameters;
 import com.automate.util.xml.XmlFormatException;
 
 public class IncomingMessageParser<P extends ProtocolParameters> implements IIncomingMessageParser<P> {

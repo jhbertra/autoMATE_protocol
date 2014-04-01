@@ -31,9 +31,9 @@ public class CommandArgument<T> extends XmlConvertible {
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof CommandArgument<?>) {
-			return 	((CommandArgument) obj).name.equals(name)
-					&& ((CommandArgument) obj).type.equals(type)
-					&& ((CommandArgument) obj).value.equals(value);
+			return 	((CommandArgument<?>) obj).name.equals(name)
+					&& ((CommandArgument<?>) obj).type.equals(type)
+					&& ((CommandArgument<?>) obj).value.equals(value);
 		} else return false;
 	}
 

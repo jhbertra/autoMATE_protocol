@@ -1,10 +1,9 @@
 package com.automate.protocol.server.messages;
 
-import java.util.List;
+import java.util.List; 
 
 import com.automate.protocol.Message;
 import com.automate.protocol.models.Node;
-import com.automate.protocol.models.Status;
 import com.automate.protocol.server.ServerProtocolParameters;
 import com.automate.util.xml.XmlFormatException;
 
