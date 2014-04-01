@@ -61,9 +61,17 @@ public class ServerAuthenticationMessage extends Message <ServerProtocolParamete
 		if(username == null) {
 			throw new NullPointerException("username null in ServerAuthenticationMesssage.");
 		}
-		Matcher userMatcher = Pattern.compile("[\\w-\\.]{6,}").matcher(username);
-		if(!userMatcher.matches()) {
-			throw new IllegalArgumentException(username + " is not a valid username.");
+
+		if(username.startsWith("$")) {
+			Matcher userMatcher = Pattern.compile("[0-9]+").matcher(username.substring(1));
+			if(!userMatcher.matches()) {
+				throw new IllegalArgumentException(username + " is not a valid node username.");
+			}
+		} else {
+			Matcher userMatcher = Pattern.compile("[\\w-\\.]{6,}").matcher(username);
+			if(!userMatcher.matches()) {
+				throw new IllegalArgumentException(username + " is not a valid username.");
+			}	
 		}
 		if(responseCode == 200) {
 			if(sessionKey == null || sessionKey.isEmpty()) {

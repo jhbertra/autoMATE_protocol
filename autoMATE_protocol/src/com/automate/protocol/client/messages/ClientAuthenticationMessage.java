@@ -41,13 +41,21 @@ public class ClientAuthenticationMessage extends Message <ClientProtocolParamete
 		if(password == null) {
 			throw new NullPointerException("password was null in ClientAuthenticationMessage");
 		}
-		Matcher userMatcher = Pattern.compile("[\\w-\\.]{6,}").matcher(username);
+		if(username.startsWith("$")) {
+			Matcher userMatcher = Pattern.compile("[0-9]+").matcher(username.substring(1));
+			if(!userMatcher.matches()) {
+				throw new IllegalArgumentException(username + " is not a valid node username.");
+			}
+		} else {
+			Matcher userMatcher = Pattern.compile("[\\w-\\.]{6,}").matcher(username);
+			if(!userMatcher.matches()) {
+				throw new IllegalArgumentException(username + " is not a valid username.");
+			}	
+		}
 		Matcher passwordMatcher1 = Pattern.compile(".{6,}").matcher(password);
 		Matcher passwordMatcher2 = Pattern.compile("[a-zA-Z]").matcher(password);
 		Matcher passwordMatcher3 = Pattern.compile("[0-9]").matcher(password);
-		if(!userMatcher.matches()) {
-			throw new IllegalArgumentException(username + " is not a valid username.");
-		} else if(!passwordMatcher1.matches() || !passwordMatcher2.find() || !passwordMatcher3.find()) {
+		if(!passwordMatcher1.matches() || !passwordMatcher2.find() || !passwordMatcher3.find()) {
 			throw new IllegalArgumentException(password + " is not a valid password.");
 		}
 		this.username = username;
